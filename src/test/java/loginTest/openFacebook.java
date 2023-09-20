@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -29,8 +30,20 @@ public class openFacebook {
 		WebElement password= driver.findElement(By.xpath("//input[@name='pass']"));
 		password.clear();
 		password.sendKeys("lala");
-driver.findElement(By.xpath("//button[@name='login']")).click();
+        driver.findElement(By.xpath("//button[@name='login']")).click();
 		
 	}
+ @Test
+ public void assertionTest() {
+	 String actualTitle = "Facebook - log in or sign up";
+	 String expectedTitle= driver.getTitle();
+	 System.out.println("Facebook expected title : " + expectedTitle);
+	 Assert.assertEquals(actualTitle,expectedTitle );
 
+	 String actualURL = "https://www.facebook.com/";
+	 String expectedURL= driver.getCurrentUrl();
+	 System.out.println("Facebook expected URL : " + expectedURL);
+	 Assert.assertEquals(actualURL,expectedURL );
+ }
+ 
 }
